@@ -394,7 +394,12 @@ where
 
         let mut current = curr;
 
+        let mut counter = 0;
         loop {
+            counter = counter + 1;
+            if counter > 10000 {
+                return;
+            }
             'inner: loop {
                 let node = match current {
                     None => break 'inner,
