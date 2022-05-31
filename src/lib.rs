@@ -419,7 +419,12 @@ where
                 Some(popped) => {
                     current = popped;
                     let node = match current {
-                        None => continue,
+                        None => {
+                            if stack.len() == 0 {
+                                return;
+                            }
+                            continue;
+                        },
                         Some(node) => node,
                     };
                     let min_node = match &node.key.0 {
